@@ -5,7 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.education.Adapters.CourseAdapter
+import com.example.education.Adapters.GroupAdapter
+import com.example.education.Database.AppDatabase
+import com.example.education.Database.entity.Course
 import com.example.education.R
+import com.example.education.databinding.FragmentAllGroupBinding
+import com.example.education.databinding.FragmentCourseBinding
 
 
 private const val ARG_PARAM1 = "param1"
@@ -16,6 +24,7 @@ class AllGroupFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -23,24 +32,32 @@ class AllGroupFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
+    private lateinit var binding: FragmentAllGroupBinding
+    private lateinit var adapter: GroupAdapter
+    private lateinit var list: List<Course>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_all_group, container, false)
+        val appDatabase: AppDatabase by lazy {
+            AppDatabase.getInstance(requireContext())
+        }
+        binding=FragmentAllGroupBinding.inflate(layoutInflater)
+        binding.apply {
+            list=ArrayList(appDatabase.courseDao().allCourse())
+            adapter= GroupAdapter(list,object:GroupAdapter.onItemClickListener{
+                override fun onClick(course: Course, position: Int) {
+                    findNavController().navigate(R.id.courseFragment)
+                }
+            })
+            rv.adapter=adapter
+            rv.layoutManager=LinearLayoutManager(requireContext())
+        }
+        return binding.root
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AllGroupFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             AllGroupFragment().apply {

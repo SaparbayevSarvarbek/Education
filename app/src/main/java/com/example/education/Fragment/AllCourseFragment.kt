@@ -55,7 +55,6 @@ class AllCourseFragment : Fragment(), CourseAdapter.MyClickListener {
                 val alertDialogBinding = AddMentorDialogBinding.inflate(layoutInflater)
                 alertDialog.setView(alertDialogBinding.root)
                 val dialog = alertDialog.create()
-
                 alertDialogBinding.apply {
                     add.setOnClickListener {
                         val name = coursename.text.toString()

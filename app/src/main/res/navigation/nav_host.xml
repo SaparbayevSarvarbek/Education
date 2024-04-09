@@ -42,7 +42,11 @@
         android:id="@+id/allGroupFragment"
         android:name="com.example.education.Fragment.AllGroupFragment"
         android:label="fragment_all_group"
-        tools:layout="@layout/fragment_all_group" />
+        tools:layout="@layout/fragment_all_group" >
+        <action
+            android:id="@+id/action_allGroupFragment_to_courseFragment"
+            app:destination="@id/courseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/courseDescFragment"
         android:name="com.example.education.Fragment.Course.CourseDescFragment"
@@ -71,4 +75,9 @@
         android:name="com.example.education.Fragment.Mentor.AddMentorFragment"
         android:label="fragment_add_mentor"
         tools:layout="@layout/fragment_add_mentor" />
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.example.education.Fragment.Group.CourseFragment"
+        android:label="fragment_course"
+        tools:layout="@layout/fragment_course" />
 </navigation>

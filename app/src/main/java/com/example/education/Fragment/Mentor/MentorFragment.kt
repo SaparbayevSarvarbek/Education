@@ -83,7 +83,6 @@ class MentorFragment : Fragment() {
                     dialog.show()
                 }
             })
-            Toast.makeText(requireContext(), "$list", Toast.LENGTH_SHORT).show()
             adapter.notifyDataSetChanged()
             rv.adapter = adapter
             rv.layoutManager = LinearLayoutManager(requireContext())
