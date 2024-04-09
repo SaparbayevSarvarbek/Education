@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.education.Fragment.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_allCourseFragment"
+            app:destination="@id/allCourseFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_allMentorFragment"
+            app:destination="@id/allMentorFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_allGroupFragment"
+            app:destination="@id/allGroupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allCourseFragment"
+        android:name="com.example.education.Fragment.AllCourseFragment"
+        android:label="fragment_all_course"
+        tools:layout="@layout/fragment_all_course" >
+        <action
+            android:id="@+id/action_allCourseFragment_to_courseDescFragment"
+            app:destination="@id/courseDescFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allMentorFragment"
+        android:name="com.example.education.Fragment.AllMentorFragment"
+        android:label="fragment_all_mentor"
+        tools:layout="@layout/fragment_all_mentor" >
+        <action
+            android:id="@+id/action_allMentorFragment_to_mentorFragment"
+            app:destination="@id/mentorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allGroupFragment"
+        android:name="com.example.education.Fragment.AllGroupFragment"
+        android:label="fragment_all_group"
+        tools:layout="@layout/fragment_all_group" />
+    <fragment
+        android:id="@+id/courseDescFragment"
+        android:name="com.example.education.Fragment.Course.CourseDescFragment"
+        android:label="fragment_course_desc"
+        tools:layout="@layout/fragment_course_desc" >
+        <action
+            android:id="@+id/action_courseDescFragment_to_addStudnetFragment"
+            app:destination="@id/addStudnetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addStudnetFragment"
+        android:name="com.example.education.Fragment.Course.AddStudnetFragment"
+        android:label="fragment_add_studnet"
+        tools:layout="@layout/fragment_add_studnet" />
+    <fragment
+        android:id="@+id/mentorFragment"
+        android:name="com.example.education.Fragment.Mentor.MentorFragment"
+        android:label="fragment_mentor"
+        tools:layout="@layout/fragment_mentor" >
+        <action
+            android:id="@+id/action_mentorFragment_to_addMentorFragment"
+            app:destination="@id/addMentorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMentorFragment"
+        android:name="com.example.education.Fragment.Mentor.AddMentorFragment"
+        android:label="fragment_add_mentor"
+        tools:layout="@layout/fragment_add_mentor" />
+</navigation>
